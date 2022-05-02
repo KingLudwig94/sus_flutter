@@ -1,11 +1,11 @@
 {
-    "name": "example",
-    "short_name": "example",
+    "name": "SUS",
+    "short_name": "SUS",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "SUS questionnaire.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

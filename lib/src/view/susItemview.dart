@@ -22,7 +22,7 @@ class _SUSItemViewState extends State<SUSItemView> {
       title: RichText(
         text: TextSpan(
           style: DefaultTextStyle.of(context).style,
-          text: '${widget.item.index + 1}. \t' + widget.item.question.text,
+          text: '${widget.item.index + 1}.  ' + widget.item.question.text,
           children: widget.missingAnswer
               ? [TextSpan(text: '*', style: TextStyle(color: Colors.red, fontSize: 18))]
               : [],

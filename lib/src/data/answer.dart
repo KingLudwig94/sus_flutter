@@ -1,5 +1,3 @@
-import 'package:sus/sus.dart';
-
 /// An enumerator that defines the five possible values that an [Answer] can take.
 enum AnswerValue {
   /// Strongly disagree.

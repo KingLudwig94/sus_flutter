@@ -4,8 +4,10 @@ import 'package:sus/src/data/susQuestionnarie.dart';
 import 'package:sus/src/view/susItemview.dart';
 
 class SUSView extends StatefulWidget {
-  const SUSView({Key? key, required this.doneCallback}) : super(key: key);
+  const SUSView({Key? key, required this.doneCallback, this.showScore = false})
+      : super(key: key);
   final Function(double) doneCallback;
+  final bool showScore;
   @override
   _SUSViewState createState() => _SUSViewState();
 }
@@ -40,22 +42,27 @@ class _SUSViewState extends State<SUSView> {
           ElevatedButton(
             onPressed: () {
               try {
-                widget.doneCallback(susQuestionnarie.getScore());
+                double score = susQuestionnarie.getScore();
+                widget.doneCallback(score);
                 showDialog(
                   context: context,
                   builder: (context) => Dialog(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 150,
+                      padding: const EdgeInsets.all(16.0),
                       child: Column(
-                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
                             'Thank you for completing the questionnaire',
                             style: Theme.of(context).textTheme.headline6,
                           ),
-                          SizedBox(
-                            height: 5,
-                          ),
+                          Spacer(),
+                          if (widget.showScore)
+                            Text(
+                              'Your score is: $score',
+                            ),
+                          Spacer(),
                           TextButton(
                             onPressed: () => Navigator.pop(context),
                             child: Text('OK'),
