@@ -28,10 +28,7 @@ class MyHomePage extends StatelessWidget {
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width / 2,
-          child: SUSView(
-            showScore: true,
-            doneCallback: (val) => print(val),
-          ),
+          child: InfoView()
         ),
       ),
     );

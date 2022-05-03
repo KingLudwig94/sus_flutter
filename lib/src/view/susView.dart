@@ -6,7 +6,9 @@ import 'package:sus/src/view/susItemview.dart';
 class SUSView extends StatefulWidget {
   const SUSView({Key? key, required this.doneCallback, this.showScore = false})
       : super(key: key);
-  final Function(double) doneCallback;
+  final Function(double score, List<int>? answers) doneCallback;
+
+  /// Show score on the completed dialog
   final bool showScore;
   @override
   _SUSViewState createState() => _SUSViewState();
@@ -43,35 +45,34 @@ class _SUSViewState extends State<SUSView> {
             onPressed: () {
               try {
                 double score = susQuestionnarie.getScore();
-                widget.doneCallback(score);
-                showDialog(
-                  context: context,
-                  builder: (context) => Dialog(
-                    child: Container(
-                      height: 150,
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            'Thank you for completing the questionnaire',
-                            style: Theme.of(context).textTheme.headline6,
-                          ),
-                          Spacer(),
-                          if (widget.showScore)
-                            Text(
-                              'Your score is: $score',
+                List<int> answers = susQuestionnarie.getAnswers();
+                widget.doneCallback(score, answers);
+                Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(
+                      builder: (context) => Scaffold(
+                        body: Center(
+                          child: Container(
+                            height: 150,
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  'Thank you for completing the questionnaire',
+                                  style: Theme.of(context).textTheme.headline6,
+                                ),
+                                if (widget.showScore) Spacer(),
+                                if (widget.showScore)
+                                  Text(
+                                    'Your score is: $score',
+                                  ),
+                              ],
                             ),
-                          Spacer(),
-                          TextButton(
-                            onPressed: () => Navigator.pop(context),
-                            child: Text('OK'),
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
-                );
+                    (route) => false);
               } catch (e) {
                 setState(() => noAns = (e as AnswerException).notAnswered);
                 showDialog(

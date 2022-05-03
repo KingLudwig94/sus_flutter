@@ -117,6 +117,17 @@ class SUSQuestionnarie {
         .toString();
   } // toString
 
+  /// A method to retrieve all answers.
+  List<int> getAnswers() {
+    //Validate answers
+    List notResp = susItems.where((element) => element.answer == null).toList();
+    if (notResp.isNotEmpty) {
+      throw AnswerException(notResp.map<int>((e) => e.index).toList());
+    }
+
+    return susItems.map<int>((e) => e.answer!.toNumber()).toList();
+  }
+  
 } // SUSQuestionnarie
 
 class AnswerException implements Exception {
