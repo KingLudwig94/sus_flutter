@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:sus/sus.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'infoView.dart';
 
-void main() {
-  runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await EasyLocalization.ensureInitialized();
+  runApp(
+    EasyLocalization(
+      path: 'assets/translations/',
+      supportedLocales: [Locale('de'), Locale('en')],
+      fallbackLocale: Locale('en'),
+      useOnlyLangCode: true,
+      useFallbackTranslations: true,
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -10,6 +23,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      locale: context.locale,
+      supportedLocales: context.supportedLocales,
+      localizationsDelegates: context.localizationDelegates,
+      debugShowCheckedModeBanner: false,
       title: 'SUS questionnaire',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -25,11 +42,23 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('SUS Questionnaire'),
+        actions: [
+          PopupMenuButton(
+            icon: Text(context.locale.toLanguageTag().toUpperCase()),
+            onSelected: (value) => context.setLocale(value as Locale),
+            itemBuilder: (context) => context.supportedLocales
+                .map((e) => PopupMenuItem<Locale>(
+                    value: e,
+                    child: Text(e.toString().toUpperCase())))
+                .toList(),
+          )
+        ],
+      ),
       body: Center(
         child: Container(
-          width: MediaQuery.of(context).size.width / 2,
-          child: InfoView()
-        ),
+            width: MediaQuery.of(context).size.width / 2, child: InfoView()),
       ),
     );
   }

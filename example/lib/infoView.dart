@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:sus/src/inputField.dart';
 import 'package:sus/sus.dart';
@@ -38,11 +39,11 @@ class InfoViewState extends State<InfoView> {
                   child: Column(
                     children: [
                       Text(
-                        'You are about to answer TEN simple questions about your experience with the DEEP platform.',
-                        style: Theme.of(context).textTheme.headline3,
+                        tr('intro', args:['the DEEP platform']),
+                        style: Theme.of(context).textTheme.headline4,
                       ),
                       Text(
-                        'Please fill the fields below and then press start.',
+                        tr('intro1'),
                         style: Theme.of(context).textTheme.headline5,
                       ),
                     ],
@@ -53,50 +54,50 @@ class InfoViewState extends State<InfoView> {
                 ),
                 Divider(),
                 InputField(
-                  description: 'Age',
+                  description: tr('age'),
                   callback: (string) => age = int.parse(string!),
                   validator: (val) =>
-                      int.tryParse(val!) != null ? null : 'Number needed',
+                      int.tryParse(val!) != null ? null : tr('numerq'),
                 ),
                 InputField(
-                  description: 'Profession',
+                  description: tr('prof'),
                   callback: (string) => profession = string!,
-                  validator: (val) => val != "" ? null : 'Required',
+                  validator: (val) => val != "" ? null : tr('required'),
                 ),
                 InputField(
-                  description: 'Years from surgery',
+                  description: tr('yfs'),
                   callback: (string) => yfs = int.parse(string!),
                   validator: (val) =>
-                      int.tryParse(val!) != null ? null : 'Number needed',
+                      int.tryParse(val!) != null ? null : tr('numerq'),
                 ),
                 InputRadio(
-                  description: 'Sex',
-                  validator: (val) => val != null ? null : 'Required',
+                  description: tr('sex'),
+                  validator: (val) => val != null ? null : tr('required'),
                   values: ['M', 'F'],
                   answer: sex,
                 ),
                 InputRadio(
-                  description: 'Literacy',
+                  description: tr('literacy'),
                   answer: literacy,
                   values: [1, 2, 3, 4, 5],
-                  validator: (val) => val != null ? null : 'Required',
+                  validator: (val) => val != null ? null : tr('required'),
                   optDesc: [
-                    'High school',
-                    'Bachelor degree',
-                    'Master degree',
-                    'PhD',
-                    'Higher'
+                    tr('hs'),
+                    tr('bd'),
+                    tr('md'),
+                    tr('phd'),
+                    tr('higher')
                   ],
                 ),
                 InputRadio(
-                  description: 'Experience level with telemedicine',
-                  validator: (val) => val != null ? null : 'Required',
+                  description: tr('exptel'),
+                  validator: (val) => val != null ? null : tr('required'),
                   values: [1, 2, 3, 4, 5],
                   answer: expTele,
                 ),
                 InputRadio(
-                  description: 'Experience level with electronic diaries',
-                  validator: (val) => val != null ? null : 'Required',
+                  description: tr('expdiary'),
+                  validator: (val) => val != null ? null : tr('required'),
                   values: [1, 2, 3, 4, 5],
                   answer: expDia,
                 ),
