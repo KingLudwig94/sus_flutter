@@ -25,7 +25,7 @@
     "bd": "Bachelor degree",
     "md": "Master degree",
     "phd": "PhD",
-    "higher": "Higher",
+    "med": "Medical school",
     "exptel": "Experience level with telemedicine",
     "expdiary": "Experience level with electronic diaries"
 }

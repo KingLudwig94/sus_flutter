@@ -39,12 +39,15 @@ class InfoViewState extends State<InfoView> {
                   child: Column(
                     children: [
                       Text(
-                        tr('intro', args:['the DEEP platform']),
+                        tr('intro', args: ['the DEEP platform']),
                         style: Theme.of(context).textTheme.headline4,
                       ),
-                      Text(
-                        tr('intro1'),
-                        style: Theme.of(context).textTheme.headline5,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          tr('intro1'),
+                          style: Theme.of(context).textTheme.headline5,
+                        ),
                       ),
                     ],
                   ),
@@ -81,13 +84,7 @@ class InfoViewState extends State<InfoView> {
                   answer: literacy,
                   values: [1, 2, 3, 4, 5],
                   validator: (val) => val != null ? null : tr('required'),
-                  optDesc: [
-                    tr('hs'),
-                    tr('bd'),
-                    tr('md'),
-                    tr('phd'),
-                    tr('higher')
-                  ],
+                  optDesc: [tr('hs'), tr('bd'), tr('md'), tr('phd'), tr('med')],
                 ),
                 InputRadio(
                   description: tr('exptel'),
@@ -119,7 +116,7 @@ class InfoViewState extends State<InfoView> {
                                     doneCallback: (score, answers) async {
                                       print(score);
                                       print(answers);
-      
+
                                       var url = Uri.parse(
                                         'http://savethekid.dei.unipd.it/index.php/api/sus/',
                                         // 'http://192.168.1.48:8000/index.php/api/sus',
@@ -199,40 +196,48 @@ class _InputRadioState<T> extends State<InputRadio> {
               return err;
             }
           : null,
-      builder: (formstate) => ListTile(
-        title: Row(
+      builder: (formstate) => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
           children: [
-            Text(widget.description),
-            if (missing)
-              Text(
-                '*',
-                style: TextStyle(color: Colors.red),
-              )
+            Row(
+              children: [
+                Text(widget.description),
+                if (missing)
+                  Text(
+                    '*',
+                    style: TextStyle(color: Colors.red, fontSize: 40),
+                  )
+              ],
+            ),
+            Wrap(
+              spacing: 20,
+              alignment: WrapAlignment.spaceEvenly,
+              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: List.generate(
+                widget.values.length,
+                (index) => Column(
+                  children: [
+                    Radio<T>(
+                      value: widget.values[index],
+                      groupValue: widget.answer.value,
+                      onChanged: (T? val) => setState(() {
+                        missing = false;
+                        widget.answer.value = val!;
+                        formstate.didChange(val);
+                      }),
+                    ),
+                    Text(
+                      widget.optDesc != null
+                          ? widget.optDesc![index]
+                          : '${widget.values[index]}',
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
-        subtitle: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: List.generate(
-              widget.values.length,
-              (index) => Column(
-                children: [
-                  Radio<T>(
-                    value: widget.values[index],
-                    groupValue: widget.answer.value,
-                    onChanged: (T? val) => setState(() {
-                      missing = false;
-                      widget.answer.value = val!;
-                      formstate.didChange(val);
-                    }),
-                  ),
-                  Text(
-                    widget.optDesc != null
-                        ? widget.optDesc![index]
-                        : '${widget.values[index]}',
-                  )
-                ],
-              ),
-            )),
       ),
     );
   }

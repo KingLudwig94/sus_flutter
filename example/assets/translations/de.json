@@ -25,7 +25,7 @@
     "bd": "Bachelor",
     "md": "Master-Abschluss",
     "phd": "PhD",
-    "higher": "Höher",
+    "med": "Medizinische Spezialisierung",
     "exptel": "Erfahrungsniveau mit Telemedizin",
     "expdiary": "Erfahrungsniveau mit elektronischen Tagebüchern"
 }

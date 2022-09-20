@@ -50,15 +50,16 @@ class MyHomePage extends StatelessWidget {
             onSelected: (value) => context.setLocale(value as Locale),
             itemBuilder: (context) => context.supportedLocales
                 .map((e) => PopupMenuItem<Locale>(
-                    value: e,
-                    child: Text(e.toString().toUpperCase())))
+                    value: e, child: Text(e.toString().toUpperCase())))
                 .toList(),
           )
         ],
       ),
       body: Center(
         child: Container(
-            width: MediaQuery.of(context).size.width / 2, child: InfoView()),
+            constraints:
+                BoxConstraints(minWidth: MediaQuery.of(context).size.width / 2, maxWidth: MediaQuery.of(context).size.width-10),
+            child: InfoView()),
       ),
     );
   }
