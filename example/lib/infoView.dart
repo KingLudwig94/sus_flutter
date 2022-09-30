@@ -21,6 +21,7 @@ class InfoViewState extends State<InfoView> {
   final ValueNotifier<int?> literacy = ValueNotifier(null);
   final ValueNotifier<int?> expDia = ValueNotifier(null);
   final ValueNotifier<int?> expTele = ValueNotifier(null);
+  final ValueNotifier<String?> plat = ValueNotifier(null);
   final GlobalKey<FormState> _form = GlobalKey();
   @override
   Widget build(BuildContext context) {
@@ -60,7 +61,7 @@ class InfoViewState extends State<InfoView> {
                   description: tr('age'),
                   callback: (string) => age = int.parse(string!),
                   validator: (val) =>
-                      int.tryParse(val!) != null ? null : tr('numerq'),
+                      int.tryParse(val!) != null ? null : tr('numreq'),
                 ),
                 InputField(
                   description: tr('prof'),
@@ -71,7 +72,7 @@ class InfoViewState extends State<InfoView> {
                   description: tr('yfs'),
                   callback: (string) => yfs = int.parse(string!),
                   validator: (val) =>
-                      int.tryParse(val!) != null ? null : tr('numerq'),
+                      int.tryParse(val!) != null ? null : tr('numreq'),
                 ),
                 InputRadio(
                   description: tr('sex'),
@@ -98,6 +99,12 @@ class InfoViewState extends State<InfoView> {
                   values: [1, 2, 3, 4, 5],
                   answer: expDia,
                 ),
+                InputRadio(
+                  description: tr('platform'),
+                  validator: (val) => val != null ? null : tr('required'),
+                  values: ['APP', 'WEBSITE'],
+                  answer: plat,
+                ),
                 SizedBox(
                   height: 20,
                 ),
@@ -118,7 +125,7 @@ class InfoViewState extends State<InfoView> {
                                       print(answers);
 
                                       var url = Uri.parse(
-                                        'http://savethekid.dei.unipd.it/index.php/api/sus/',
+                                        'https://savethekid.dei.unipd.it/index.php/api/sus/',
                                         // 'http://192.168.1.48:8000/index.php/api/sus',
                                       );
                                       var body = {
@@ -140,6 +147,7 @@ class InfoViewState extends State<InfoView> {
                                         'years_since_surgery': yfs,
                                         'exp_level_telemedicine': expTele.value,
                                         'exp_level_diary': expDia.value,
+                                        'platform': plat.value,
                                       };
                                       var json = jsonEncode(body);
                                       print(json);

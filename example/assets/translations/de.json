@@ -27,5 +27,6 @@
     "phd": "PhD",
     "med": "Medizinische Spezialisierung",
     "exptel": "Erfahrungsniveau mit Telemedizin",
-    "expdiary": "Erfahrungsniveau mit elektronischen Tagebüchern"
+    "expdiary": "Erfahrungsniveau mit elektronischen Tagebüchern",
+    "platform": "Platfomr"
 }

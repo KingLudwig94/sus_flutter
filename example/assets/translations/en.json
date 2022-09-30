@@ -27,5 +27,6 @@
     "phd": "PhD",
     "med": "Medical school",
     "exptel": "Experience level with telemedicine",
-    "expdiary": "Experience level with electronic diaries"
+    "expdiary": "Experience level with electronic diaries",
+    "platform": "Platform"
 }
