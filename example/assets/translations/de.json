@@ -1,0 +1,32 @@
+{
+    "q0": "Ich kann mir sehr gut vorstellen, das System regelmäßig zu nutzen.",
+    "q1": "Ich empfinde das System als unnötig komplex.",
+    "q2": "Ich empfinde das System als einfach zu nutzen.",
+    "q3": "Ich denke, dass ich technischen Support brauchen würde, um das System zu nutzen.",
+    "q4": "Ich finde, dass die verschiedenen Funktionen des Systems gut integriert sind.",
+    "q5": "Ich finde, dass es im System zu viele Inkonsistenzen gibt.",
+    "q6": "Ich kann mir vorstellen, dass die meisten Leute das System schnell zu beherrschen lernen.",
+    "q7": "Ich empfinde die Bedienung als sehr umständlich.",
+    "q8": "Ich habe mich bei der Nutzung des Systems sehr sicher gefühlt.",
+    "q9": "Ich musste eine Menge Dinge lernen, bevor ich mit dem System arbeiten konnte.",
+
+
+    
+    "intro": "Sie sind dabei, ZEHN einfache Fragen zu Ihrer Erfahrung mit {} zu beantworten.",
+    "intro1": "Bitte füllen Sie die Felder unten aus und drücken Sie dann auf Start.",
+    "age": "Alter",
+    "required": "erforderlich",
+    "numreq": "Nummer erforderlich",
+    "prof": "Beruf",
+    "yfs": "Jahre seit der Operation",
+    "sex": "Geschlecht",
+    "literacy": "Alphabetisierung",
+    "hs": "Gymnasium",
+    "bd": "Bachelor",
+    "md": "Master-Abschluss",
+    "phd": "PhD",
+    "med": "Medizinische Spezialisierung",
+    "exptel": "Erfahrungsniveau mit Telemedizin",
+    "expdiary": "Erfahrungsniveau mit elektronischen Tagebüchern",
+    "platform": "Platfomr"
+}

@@ -1,4 +1,5 @@
 import 'package:sus/sus.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 /// [SUSQuestionnarie] is the class that implements the data model of the SUS questionnarie.
 class SUSQuestionnarie {
@@ -13,19 +14,19 @@ class SUSQuestionnarie {
       SUSItem(
         index: 0,
         question: Question(
-            text: "I think that I would like to use this system frequently."),
+            text: tr('q1')),
         answer: null,
         isPositive: true,
       ),
       SUSItem(
         index: 1,
-        question: Question(text: "I found the system unnecessarily complex."),
+        question: Question(text: tr('q2')),
         answer: null,
         isPositive: false,
       ),
       SUSItem(
         index: 2,
-        question: Question(text: "I thought the system was easy to use."),
+        question: Question(text: tr('q3')),
         answer: null,
         isPositive: true,
       ),
@@ -33,7 +34,7 @@ class SUSQuestionnarie {
         index: 3,
         question: Question(
             text:
-                "I think that I would need the support of a technical person to be able to use this system."),
+                tr('q3')),
         answer: null,
         isPositive: false,
       ),
@@ -41,14 +42,14 @@ class SUSQuestionnarie {
         index: 4,
         question: Question(
             text:
-                "I found the various functions in this system were well integrated."),
+                tr('q4')),
         answer: null,
         isPositive: true,
       ),
       SUSItem(
         index: 5,
         question: Question(
-            text: "I thought there was too much inconsistency in this system."),
+            text: tr('q5')),
         answer: null,
         isPositive: false,
       ),
@@ -56,19 +57,19 @@ class SUSQuestionnarie {
         index: 6,
         question: Question(
             text:
-                "I would imagine that most people would learn to use this system very quickly."),
+                tr('q6')),
         answer: null,
         isPositive: true,
       ),
       SUSItem(
         index: 7,
-        question: Question(text: "I found the system very cumbersome to use."),
+        question: Question(text: tr('q7')),
         answer: null,
         isPositive: false,
       ),
       SUSItem(
         index: 8,
-        question: Question(text: "I felt very confident using the system."),
+        question: Question(text: tr('q8')),
         answer: null,
         isPositive: true,
       ),
@@ -76,7 +77,7 @@ class SUSQuestionnarie {
         index: 9,
         question: Question(
             text:
-                "I needed to learn a lot of things before I could get going with this system."),
+                tr('q9')),
         answer: null,
         isPositive: false,
       ),

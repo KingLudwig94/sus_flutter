@@ -1,0 +1,32 @@
+{
+    "q0": "I think that I would like to use this system frequently.",
+    "q1": "I found the system unnecessarily complex.",
+    "q2": "I thought the system was easy to use.",
+    "q3": "I think that I would need the support of a technical person to be able to use this system.",
+    "q4": "I found the various functions in this system were well integrated.",
+    "q5": "I thought there was too much inconsistency in this system.",
+    "q6": "I would imagine that most people would learn to use this system very quickly.",
+    "q7": "I found the system very cumbersome to use.",
+    "q8": "I felt very confident using the system.",
+    "q9": "I needed to learn a lot of things before I could get going with this system.",
+
+
+    
+    "intro": "You are about to answer TEN simple questions about your experience with {}.",
+    "intro1": "Please fill the fields below and then press start.",
+    "age": "Age",
+    "required": "Required",
+    "numreq": "Number required",
+    "prof": "Profession",
+    "yfs": "Years from surgery",
+    "sex": "Sex",
+    "literacy": "Literacy",
+    "hs": "High school",
+    "bd": "Bachelor degree",
+    "md": "Master degree",
+    "phd": "PhD",
+    "med": "Medical school",
+    "exptel": "Experience level with telemedicine",
+    "expdiary": "Experience level with electronic diaries",
+    "platform": "Platform"
+}
