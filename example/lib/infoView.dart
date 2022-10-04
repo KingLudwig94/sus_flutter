@@ -32,136 +32,138 @@ class InfoViewState extends State<InfoView> {
           child: Container(
             constraints: BoxConstraints.expand(
                 width: MediaQuery.of(context).size.width / 2),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  child: Column(
-                    children: [
-                      Text(
-                        tr('intro', args: ['the DEEP platform']),
-                        style: Theme.of(context).textTheme.headline4,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          tr('intro1'),
-                          style: Theme.of(context).textTheme.headline5,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    child: Column(
+                      children: [
+                        Text(
+                          tr('intro', args: ['the DEEP platform']),
+                          style: Theme.of(context).textTheme.headline4,
                         ),
-                      ),
-                    ],
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            tr('intro1'),
+                            style: Theme.of(context).textTheme.headline5,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Divider(),
-                InputField(
-                  description: tr('age'),
-                  callback: (string) => age = int.parse(string!),
-                  validator: (val) =>
-                      int.tryParse(val!) != null ? null : tr('numreq'),
-                ),
-                InputField(
-                  description: tr('prof'),
-                  callback: (string) => profession = string!,
-                  validator: (val) => val != "" ? null : tr('required'),
-                ),
-                InputField(
-                  description: tr('yfs'),
-                  callback: (string) => yfs = int.parse(string!),
-                  validator: (val) =>
-                      int.tryParse(val!) != null ? null : tr('numreq'),
-                ),
-                InputRadio(
-                  description: tr('sex'),
-                  validator: (val) => val != null ? null : tr('required'),
-                  values: ['M', 'F'],
-                  answer: sex,
-                ),
-                InputRadio(
-                  description: tr('literacy'),
-                  answer: literacy,
-                  values: [1, 2, 3, 4, 5],
-                  validator: (val) => val != null ? null : tr('required'),
-                  optDesc: [tr('hs'), tr('bd'), tr('md'), tr('phd'), tr('med')],
-                ),
-                InputRadio(
-                  description: tr('exptel'),
-                  validator: (val) => val != null ? null : tr('required'),
-                  values: [1, 2, 3, 4, 5],
-                  answer: expTele,
-                ),
-                InputRadio(
-                  description: tr('expdiary'),
-                  validator: (val) => val != null ? null : tr('required'),
-                  values: [1, 2, 3, 4, 5],
-                  answer: expDia,
-                ),
-                InputRadio(
-                  description: tr('platform'),
-                  validator: (val) => val != null ? null : tr('required'),
-                  values: ['APP', 'WEBSITE'],
-                  answer: plat,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      if (!_form.currentState!.validate()) return;
-                      _form.currentState!.save();
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Scaffold(
-                              body: Center(
-                                child: Container(
-                                  width: MediaQuery.of(context).size.width / 2,
-                                  child: SUSView(
-                                    doneCallback: (score, answers) async {
-                                      print(score);
-                                      print(answers);
-
-                                      var url = Uri.parse(
-                                        'https://savethekid.dei.unipd.it/index.php/api/sus/',
-                                        // 'http://192.168.1.48:8000/index.php/api/sus',
-                                      );
-                                      var body = {
-                                        'age': age,
-                                        'profession': profession,
-                                        'score': score,
-                                        'q1': answers![0],
-                                        'q2': answers[1],
-                                        'q3': answers[2],
-                                        'q4': answers[3],
-                                        'q5': answers[4],
-                                        'q6': answers[5],
-                                        'q7': answers[6],
-                                        'q8': answers[7],
-                                        'q9': answers[8],
-                                        'q10': answers[9],
-                                        'literacy': literacy.value,
-                                        'sex': sex.value,
-                                        'years_since_surgery': yfs,
-                                        'exp_level_telemedicine': expTele.value,
-                                        'exp_level_diary': expDia.value,
-                                        'platform': plat.value,
-                                      };
-                                      var json = jsonEncode(body);
-                                      print(json);
-                                      await http.put(url, body: json);
-                                    },
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Divider(),
+                  InputField(
+                    description: tr('age'),
+                    callback: (string) => age = int.parse(string!),
+                    validator: (val) =>
+                        int.tryParse(val!) != null ? null : tr('numreq'),
+                  ),
+                  InputField(
+                    description: tr('prof'),
+                    callback: (string) => profession = string!,
+                    validator: (val) => val != "" ? null : tr('required'),
+                  ),
+                  InputField(
+                    description: tr('yfs'),
+                    callback: (string) => yfs = int.parse(string!),
+                    validator: (val) =>
+                        int.tryParse(val!) != null ? null : tr('numreq'),
+                  ),
+                  InputRadio(
+                    description: tr('sex'),
+                    validator: (val) => val != null ? null : tr('required'),
+                    values: ['M', 'F'],
+                    answer: sex,
+                  ),
+                  InputRadio(
+                    description: tr('literacy'),
+                    answer: literacy,
+                    values: [1, 2, 3, 4, 5],
+                    validator: (val) => val != null ? null : tr('required'),
+                    optDesc: [tr('hs'), tr('bd'), tr('md'), tr('phd'), tr('med')],
+                  ),
+                  InputRadio(
+                    description: tr('exptel'),
+                    validator: (val) => val != null ? null : tr('required'),
+                    values: [1, 2, 3, 4, 5],
+                    answer: expTele,
+                  ),
+                  InputRadio(
+                    description: tr('expdiary'),
+                    validator: (val) => val != null ? null : tr('required'),
+                    values: [1, 2, 3, 4, 5],
+                    answer: expDia,
+                  ),
+                  InputRadio(
+                    description: tr('platform'),
+                    validator: (val) => val != null ? null : tr('required'),
+                    values: ['APP', 'WEBSITE'],
+                    answer: plat,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        if (!_form.currentState!.validate()) return;
+                        _form.currentState!.save();
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Scaffold(
+                                body: Center(
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width / 2,
+                                    child: SUSView(
+                                      doneCallback: (score, answers) async {
+                                        print(score);
+                                        print(answers);
+            
+                                        var url = Uri.parse(
+                                          'https://savethekid.dei.unipd.it/index.php/api/sus/',
+                                          // 'http://192.168.1.48:8000/index.php/api/sus',
+                                        );
+                                        var body = {
+                                          'age': age,
+                                          'profession': profession,
+                                          'score': score,
+                                          'q1': answers![0],
+                                          'q2': answers[1],
+                                          'q3': answers[2],
+                                          'q4': answers[3],
+                                          'q5': answers[4],
+                                          'q6': answers[5],
+                                          'q7': answers[6],
+                                          'q8': answers[7],
+                                          'q9': answers[8],
+                                          'q10': answers[9],
+                                          'literacy': literacy.value,
+                                          'sex': sex.value,
+                                          'years_since_surgery': yfs,
+                                          'exp_level_telemedicine': expTele.value,
+                                          'exp_level_diary': expDia.value,
+                                          'platform': plat.value,
+                                        };
+                                        var json = jsonEncode(body);
+                                        print(json);
+                                        await http.put(url, body: json);
+                                      },
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          (route) => false);
-                    },
-                    child: Text('Start')),
-              ],
+                            (route) => false);
+                      },
+                      child: Text('Start')),
+                ],
+              ),
             ),
           ),
         ),
