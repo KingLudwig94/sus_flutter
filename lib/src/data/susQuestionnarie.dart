@@ -14,19 +14,19 @@ class SUSQuestionnarie {
       SUSItem(
         index: 0,
         question: Question(
-            text: tr('q1')),
+            text: tr('q0')),
         answer: null,
         isPositive: true,
       ),
       SUSItem(
         index: 1,
-        question: Question(text: tr('q2')),
+        question: Question(text: tr('q1')),
         answer: null,
         isPositive: false,
       ),
       SUSItem(
         index: 2,
-        question: Question(text: tr('q3')),
+        question: Question(text: tr('q2')),
         answer: null,
         isPositive: true,
       ),
